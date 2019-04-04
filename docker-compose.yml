@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  netControl:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+      cache_from:
+        raspbian/stretch:041518
+    volumes:
+       - /etc/hosts:/etc/hosts
+    networks:
+      hostnet: {}
+    env_file: 
+      config.env
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: always
+
+networks:
+  hostnet:
+    external: true
+    name: host
+
+privileged: true
