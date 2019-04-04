@@ -10,7 +10,7 @@ RUN apt-get install -y \
     net-tools \
     iptables \
     dnsmasq \
-    vim \
+    vim
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
